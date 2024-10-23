@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M12</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Bienvenidos, Genios. Hoy vamos a trabajar con un reto práctico que pondrá a prueba sus habilidades con few-shot prompting. La IA será clave para resolver un problema que podría suceder en cualquier empresa."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de iniciar, quiero ver cómo se sienten hoy. Si están listos para abordar el reto, pongan ambas manos en sus bolsillos. Si sienten que hoy será un día pesado, crucen los brazos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, agradezcamos este momento para aprender juntos. Junten sus manos en señal de gratitud por la oportunidad de descubrir nuevas habilidades hoy. ¡Gracias por asistir!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos importantes: 1. Redactar correos personalizados utilizando few-shot prompting. 2. Resolver el problema del servicio al cliente de manera eficiente y empática. ¡Es hora de poner en práctica lo que sabemos!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🔄 Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Ejercicio breve para mejorar la concentración y fomentar la empatía.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Saludo de Suerte".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de movernos un poco y preparar nuestras mentes para la misión. Levántense, saluden con la mano a los compañeros a su alrededor y díganles: 'Suerte en el reto'. Este pequeño gesto crea conexiones y nos ayuda a trabajar mejor en equipo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 con cronómetro de 1 minuto.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión del Ejercicio".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, Genios. Conectar con quienes nos rodean a través de un simple saludo mejora la colaboración y el ambiente de trabajo. Nunca subestimen el poder de la empatía, especialmente cuando enfrentamos retos complejos como el de hoy."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formación de equipos y preparación para el reto.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, quiero que formen los mismos equipos de 3 personas que utilizaron en la misión anterior. Organícense rápidamente y asegúrense de estar listos para el reto. Les daré 1 minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 con cronómetro de 1 minuto.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recogida de Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen sus equipos, un representante de cada equipo puede pasar a recoger las Magic Tablets. Les daré 1 minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 con cronómetro de 1 minuto.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 39 minutos</div>
+        <div class="subtitle">Reto práctico utilizando few-shot prompting para gestionar comunicación con clientes.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 13 "Título del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Bienvenidos al reto de hoy, Genios. Están por enfrentar una situación compleja: un apagón inesperado en ShopSmart ha causado retrasos en miles de pedidos. Su misión será redactar correos personalizados, empáticos e informativos para los clientes afectados, con la ayuda de la IA. Normalmente sería imposible responder de manera personalizada y empética a cada uno de los correos y quejas de los clientes afectados. Pero nosotros tenemos una herramienta única y vamos a poner a prueba nuestros conocimientos en ella."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 14 "Reglas del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La única fuente de información permitida será ChatGPT. Su objetivo es utilizar few-shot prompting para generar respuestas precisas y empáticas a cada cliente. Trabajen como equipo, usando IA como su aliado, casi como si fuera un miembro más del equipo. ¿Listos? Vamos a las fases."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Fase 1: Respuesta Manual".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En esta primera fase, deberán redactar manualmente respuestas personalizadas para dos quejas, siguiendo las guías de comunicación de la empresa. Esto les dará una idea de cómo estructurar las respuestas y mostrar empatía. De igual manera, éstas respuestas que ustedes redacten a mano serán nuestros Few-Shots para el prompt que nos ayudará a responder el resto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (10 minutos):</strong> Proyectar Diapositiva 16 con cronómetro de 10 minutos.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 17 "Fase 2: Few-Shot Prompting".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, tomen las respuestas que redactaron y úsenlas como ejemplos en su prompt para ChatGPT. Este será su few-shot prompt, que guiará a la IA a generar respuestas similares en tono y estructura para las demás quejas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (3 minutos):</strong> Proyectar Diapositiva 18 con cronómetro de 3 minutos.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Fase 3: Procesamiento de Quejas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En esta fase, ingresen las quejas adicionales en ChatGPT junto con su few-shot prompt. La IA les ayudará a generar respuestas personalizadas para cada cliente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (10 minutos):</strong> Proyectar Diapositiva 20 con cronómetro de 10 minutos.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Fase 4: Revisión y Ajuste".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Revisen cada respuesta generada por la IA para asegurarse de que sea adecuada y siga las guías de comunicación. Si es necesario, ajusten el prompt para mejorar los resultados."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (3 minutos):</strong> Proyectar Diapositiva 22 con cronómetro de 3 minutos.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Fase 5: Compilación de Respuestas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Compilen todas las respuestas finales en un solo documento para presentarlo como el plan de comunicación definitivo. Asegúrense de que el tono sea consistente y profesional en todas las respuestas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (5 minutos):</strong> Proyectar Diapositiva 24 con cronómetro de 5 minutos.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Fase 6: Reflexión en Equipo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Júntense con el equipo más cercano para compartir sus respuestas a las quejas y discutan cómo el uso de few-shot prompting facilitó la gestión de tantas quejas. ¿Qué aprendieron sobre la importancia de ejemplos bien diseñados?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (5 minutos):</strong> Proyectar Diapositiva 26 con cronómetro de 5 minutos.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos completado todos los objetivos de hoy. Han aprendido a diseñar prompts efectivos utilizando ejemplos y han utilizado IA para gestionar eficientemente la comunicación con clientes. ¡Gran trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 16 (0.5 minutos):</strong> Proyectar Diapositiva 28 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Han terminado el reto! Ahora pueden disfrutar su recompensa. ¡You've Got Mon-e!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_the_dojo')">
+        <div class="title">🙏 Actividad 5: Honor the Dojo ⏰ Tiempo: 1 minuto</div>
+        <div class="subtitle">Devolución de las Magic Tablets y orden del espacio.</div>
+    </div>
+    <div id="honor_the_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 29 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de terminar, vamos a dejar todo en orden. Por favor, cada equipo devuelva las Magic Tablets y asegúrense de que su espacio quede impecable. Muchas gracias por su esfuerzo y participación hoy. Nos vemos en la siguiente misión. ¡Buen trabajo a todos!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
